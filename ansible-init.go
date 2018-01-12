@@ -58,8 +58,13 @@ func main() {
 
 	fmt.Println("Should I create subfolders?")
 	if askForConfirmation() {
-		var newPath = ( fullPath + "/doc")
-		createDirectory(newPath)
+		subDirs := []string{"docs","playbooks","inventory","roles","plugins","modules"}
+
+		for _, value := range subDirs {
+			var newPath = ( fullPath + "/" + value)
+			strings.TrimSpace(newPath)
+			createDirectory(newPath)
+		}
 	}
 }
 
